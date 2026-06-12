@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Storefront — Ashen Paul</title>
+  <meta name="description" content="A modular e-commerce product catalog by Ashen Paul. Client-side routing, cart management, and live search — no frameworks." />
+  <meta name="author" content="Ashen Paul" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://ashenpaul.dev/storefront/" />
+
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://ashenpaul.dev/storefront/" />
+  <meta property="og:title"       content="Storefront — Ashen Paul" />
+  <meta property="og:description" content="A modular e-commerce product catalog. Task 5 capstone." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+
+      <a href="#/" class="logo" aria-label="Storefront — go to home" data-link>
+        <span class="logo-mark" aria-hidden="true">S</span>
+        <span class="logo-text">Storefront</span>
+      </a>
+
+      <nav id="main-nav" class="primary-nav" aria-label="Main navigation">
+        <ul role="list">
+          <li><a href="#/"        data-link>Shop</a></li>
+          <li><a href="#/about"   data-link>About</a></li>
+          <li><a href="#/contact" data-link>Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <button class="icon-btn theme-btn" id="theme-btn" aria-label="Switch to light mode">
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1"  x2="12" y2="3"/>   <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>    <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+
+        <button class="icon-btn cart-btn" id="cart-btn"
+                aria-label="Open cart — 0 items"
+                aria-expanded="false"
+                aria-controls="cart-drawer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-badge" id="cart-badge" aria-hidden="true">0</span>
+        </button>
+
+        <button class="icon-btn nav-toggle"
+                aria-controls="main-nav"
+                aria-expanded="false"
+                aria-label="Open navigation menu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ===== CART DRAWER ===== -->
+  <aside id="cart-drawer" class="cart-drawer"
+         aria-label="Shopping cart" hidden>
+    <div class="cart-header">
+      <h2 class="cart-title">Your Cart</h2>
+      <button class="icon-btn" id="cart-close" aria-label="Close cart">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6"  y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="cart-body" id="cart-body"></div>
+    <div class="cart-footer" id="cart-footer" hidden>
+      <div class="cart-total-row">
+        <span>Subtotal</span>
+        <span class="cart-total" id="cart-total">₹0</span>
+      </div>
+      <p class="cart-note">Taxes and shipping calculated at checkout</p>
+      <button class="btn-checkout" id="btn-checkout">Proceed to Checkout</button>
+    </div>
+  </aside>
+  <div class="cart-overlay" id="cart-overlay" hidden aria-hidden="true"></div>
+
+  <!-- ===== MAIN — SPA root ===== -->
+  <main id="main-content" tabindex="-1">
+    <div id="app-root"></div>
+  </main>
+
+  <!-- ===== TOAST ===== -->
+  <div id="toast" class="toast" role="status"
+       aria-live="polite" aria-atomic="true" hidden></div>
+
+  <!-- ===== SCREEN READER ANNOUNCE ===== -->
+  <p id="live-announce" class="sr-only"
+     aria-live="polite" aria-atomic="true"></p>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <p class="footer-copy">
+        &copy; <time datetime="2025">2025</time> Ashen Paul &mdash;
+        Task 5: Full-Stack Deployment &amp; Architecture
+      </p>
+      <nav aria-label="Footer links">
+        <ul role="list" class="foot-links">
+          <li><a href="#/">Shop</a></li>
+          <li><a href="#/about">About</a></li>
+          <li><a href="#/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Checkout success modal -->
+  <div id="checkout-modal" class="modal-backdrop"
+       role="dialog" aria-modal="true" aria-labelledby="modal-h" hidden>
+    <div class="modal">
+      <span class="modal-icon" aria-hidden="true">🎉</span>
+      <h2 id="modal-h">Order placed!</h2>
+      <p>Thanks for shopping. Your order has been received and will be processed shortly.</p>
+      <button class="btn-solid" id="modal-close">Continue shopping</button>
+    </div>
+  </div>
+
+  <script src="assets/products.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
