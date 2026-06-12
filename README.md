@@ -140,6 +140,3 @@ git diff            # line-by-line changes before staging
 
 ---
 
-## Licence
-
-MIT
